@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>NSE Swing Trade Dashboard</title>
+<style>
+    :root { --bg: #f2efe8; --panel: #fffdf8; --ink: #1f2a1f; --muted: #6f6a60; --line: #ddd4c4; --buy: #e1f0dd; --sell: #f7dfd8; --hold: #f3ead0; --accent: #163a2b; }
+    body { font-family: Georgia, "Times New Roman", serif; margin: 0; background: radial-gradient(circle at top, #f9f5eb 0%, var(--bg) 55%, #e9e2d5 100%); color: var(--ink); }
+    .page { max-width: 1180px; margin: 0 auto; padding: 32px 20px 48px; }
+    .hero { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 24px; }
+    h1 { margin: 0; font-size: 38px; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); margin-top: 8px; max-width: 760px; line-height: 1.5; }
+    .stamp { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .panel { background: color-mix(in srgb, var(--panel) 88%, white 12%); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 18px 50px rgba(53, 40, 19, 0.08); overflow: hidden; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid var(--line); padding: 14px 16px; text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent); color: #f8f4ea; font-weight: 600; letter-spacing: 0.02em; }
+    .buy-row { background: var(--buy); }
+    .sell-row { background: var(--sell); }
+    .hold-row { background: var(--hold); }
+    .price { font-variant-numeric: tabular-nums; }
+    .signal-pill { display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+    .signal-buy { background: #2d6a4f; color: #eff9f1; }
+    .signal-sell { background: #9c2f28; color: #fff3f1; }
+    .signal-hold { background: #7a6424; color: #fff9e8; }
+    .why { color: #4f4a40; font-size: 13px; max-width: 380px; line-height: 1.45; }
+    .disclaimer { margin-top: 18px; color: var(--muted); font-size: 13px; max-width: 760px; line-height: 1.5; }
+    @media (max-width: 900px) {
+        .hero { display: block; }
+        .stamp { margin-top: 12px; }
+        .panel { overflow-x: auto; }
+        table { min-width: 860px; }
+    }
+</style></head>
+<body>
+    <div class="page">
+        <div class="hero">
+            <div>
+                <h1>NSE Swing Trade Dashboard</h1>
+                <div class="subtitle">Daily swing setups based on trend alignment, breakout structure, RSI, MACD, and ATR-based risk levels.</div>
+            </div>
+            <div class="stamp">Generated: 2026-07-21 18:19:55</div>
+        </div>
+        <div class="panel">
+            <table>
+                <tr><th>Symbol</th><th>Price</th><th>Signal</th><th>Confidence</th><th>Stop Loss</th><th>Target</th><th>Why</th></tr>
+                
+        <tr class="buy-row">
+            <td>360ONE</td>
+            <td class="price">1119.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1050.87</td>
+            <td>1257.36</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>3MINDIA</td>
+            <td class="price">35170.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>33311.32</td>
+            <td>38887.36</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ABB</td>
+            <td class="price">7532.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>7076.0</td>
+            <td>8444.0</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>AIIL</td>
+            <td class="price">558.55</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>516.21</td>
+            <td>643.22</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>AJANTPHARM</td>
+            <td class="price">3575.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>3376.97</td>
+            <td>3971.96</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ALKEM</td>
+            <td class="price">5681.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>5439.5</td>
+            <td>6165.5</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ANTHEM</td>
+            <td class="price">791.55</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>757.14</td>
+            <td>860.36</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); RSI is rising in a healthy bullish range; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BAJAJ-AUTO</td>
+            <td class="price">10403.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>9979.79</td>
+            <td>11250.93</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BAJFINANCE</td>
+            <td class="price">1069.2</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1020.0</td>
+            <td>1167.6</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BANKINDIA</td>
+            <td class="price">147.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>137.53</td>
+            <td>166.25</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BHARATFORG</td>
+            <td class="price">2201.8</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2094.48</td>
+            <td>2416.44</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BHEL</td>
+            <td class="price">413.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>380.33</td>
+            <td>479.24</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BIOCON</td>
+            <td class="price">440.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>412.34</td>
+            <td>496.23</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BLUESTARCO</td>
+            <td class="price">1702.8</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1609.4</td>
+            <td>1889.59</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BPCL</td>
+            <td class="price">319.35</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>303.79</td>
+            <td>350.46</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>CRISIL</td>
+            <td class="price">4302.4</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>4080.94</td>
+            <td>4745.31</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>CUMMINSIND</td>
+            <td class="price">5583.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>5305.74</td>
+            <td>6137.51</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD gave a fresh bullish crossover</td>
+        </tr>
+        <tr class="buy-row">
+            <td>DALBHARAT</td>
+            <td class="price">1864.2</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1774.96</td>
+            <td>2042.69</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>GLAXO</td>
+            <td class="price">2506.6</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2401.81</td>
+            <td>2716.17</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>GLENMARK</td>
+            <td class="price">2242.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2137.17</td>
+            <td>2451.96</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>GODREJIND</td>
+            <td class="price">1380.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1268.86</td>
+            <td>1603.79</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>GODREJPROP</td>
+            <td class="price">2164.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2043.01</td>
+            <td>2406.87</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>HAL</td>
+            <td class="price">4581.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>4407.84</td>
+            <td>4929.41</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>HINDPETRO</td>
+            <td class="price">406.95</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>386.8</td>
+            <td>447.25</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>IPCALAB</td>
+            <td class="price">1799.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1680.37</td>
+            <td>2036.26</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>JKCEMENT</td>
+            <td class="price">5658.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>5321.86</td>
+            <td>6330.29</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); RSI is rising in a healthy bullish range; MACD gave a fresh bullish crossover</td>
+        </tr>
+        <tr class="buy-row">
+            <td>JSWENERGY</td>
+            <td class="price">566.2</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>536.4</td>
+            <td>625.8</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>JSWINFRA</td>
+            <td class="price">344.55</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>322.19</td>
+            <td>389.28</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>LAURUSLABS</td>
+            <td class="price">1593.2</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1509.59</td>
+            <td>1760.43</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>LLOYDSME</td>
+            <td class="price">1936.4</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1817.8</td>
+            <td>2173.6</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>LUPIN</td>
+            <td class="price">2514.8</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2414.09</td>
+            <td>2716.23</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>MANKIND</td>
+            <td class="price">2579.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2457.34</td>
+            <td>2823.81</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>NHPC</td>
+            <td class="price">80.31</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>76.95</td>
+            <td>87.03</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>PAYTM</td>
+            <td class="price">1300.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>1203.71</td>
+            <td>1494.07</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>PNB</td>
+            <td class="price">112.08</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>106.98</td>
+            <td>122.28</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SCHAEFFLER</td>
+            <td class="price">4180.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>4011.44</td>
+            <td>4517.41</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SHREECEM</td>
+            <td class="price">27245.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>26137.92</td>
+            <td>29459.17</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SOLARINDS</td>
+            <td class="price">19045.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>17905.86</td>
+            <td>21323.29</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SRF</td>
+            <td class="price">2939.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>2794.46</td>
+            <td>3228.09</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>TORNTPHARM</td>
+            <td class="price">5040.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>4762.46</td>
+            <td>5597.19</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>TVSMOTOR</td>
+            <td class="price">3792.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>3590.26</td>
+            <td>4195.49</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; MACD gave a fresh bullish crossover</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ULTRACEMCO</td>
+            <td class="price">12094.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>11658.43</td>
+            <td>12965.14</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>UNIONBANK</td>
+            <td class="price">176.11</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>100.0%</td>
+            <td>164.29</td>
+            <td>199.76</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>EXIDEIND</td>
+            <td class="price">443.45</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>87.5%</td>
+            <td>419.46</td>
+            <td>491.43</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>INDUSINDBK</td>
+            <td class="price">1063.45</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>87.5%</td>
+            <td>1009.23</td>
+            <td>1171.89</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>M&amp;MFIN</td>
+            <td class="price">349.85</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>87.5%</td>
+            <td>325.12</td>
+            <td>399.31</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ABBOTINDIA</td>
+            <td class="price">28800.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>85.7%</td>
+            <td>27705.0</td>
+            <td>30990.0</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>FLUOROCHEM</td>
+            <td class="price">4607.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>85.7%</td>
+            <td>4330.0</td>
+            <td>5161.3</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>TITAN</td>
+            <td class="price">4688.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>85.7%</td>
+            <td>4538.11</td>
+            <td>4989.88</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ADANIENSOL</td>
+            <td class="price">1741.6</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>83.3%</td>
+            <td>1616.34</td>
+            <td>1992.11</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BHARTIHEXA</td>
+            <td class="price">1651.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>83.3%</td>
+            <td>1553.1</td>
+            <td>1847.1</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="buy-row">
+            <td>FEDERALBNK</td>
+            <td class="price">356.05</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>83.3%</td>
+            <td>339.64</td>
+            <td>388.86</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke above the prior 20-bar swing high; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>PIDILITIND</td>
+            <td class="price">1591.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>83.3%</td>
+            <td>1528.33</td>
+            <td>1717.24</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SHRIRAMFIN</td>
+            <td class="price">1061.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>83.3%</td>
+            <td>1003.5</td>
+            <td>1177.49</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ABCAPITAL</td>
+            <td class="price">409.05</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>387.68</td>
+            <td>451.79</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>APOLLOHOSP</td>
+            <td class="price">8926.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>8637.21</td>
+            <td>9505.07</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>AUROPHARMA</td>
+            <td class="price">1579.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1502.29</td>
+            <td>1734.53</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>AXISBANK</td>
+            <td class="price">1258.2</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1195.29</td>
+            <td>1384.02</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); RSI is deeply oversold and bounce risk is rising; MACD remains below its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>BAJAJFINSV</td>
+            <td class="price">1900.6</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1811.1</td>
+            <td>2079.6</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>DIVISLAB</td>
+            <td class="price">7330.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>7010.93</td>
+            <td>7968.14</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>EICHERMOT</td>
+            <td class="price">7689.5</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>7400.79</td>
+            <td>8266.93</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ENDURANCE</td>
+            <td class="price">2752.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>2604.37</td>
+            <td>3047.26</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>FORTIS</td>
+            <td class="price">969.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>928.44</td>
+            <td>1050.13</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>ICICIBANK</td>
+            <td class="price">1463.1</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1410.73</td>
+            <td>1567.84</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); RSI is stretched on the upside; MACD remains above its signal line</td>
+        </tr>
+        <tr class="buy-row">
+            <td>IDFCFIRSTB</td>
+            <td class="price">81.66</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>78.22</td>
+            <td>88.53</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>INDHOTEL</td>
+            <td class="price">731.6</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>697.44</td>
+            <td>799.91</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>LODHA</td>
+            <td class="price">1198.95</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1104.49</td>
+            <td>1387.86</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>NAUKRI</td>
+            <td class="price">1207.7</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1124.53</td>
+            <td>1374.04</td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SBIN</td>
+            <td class="price">1044.4</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1004.63</td>
+            <td>1123.94</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="buy-row">
+            <td>SUNPHARMA</td>
+            <td class="price">1961.9</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1898.59</td>
+            <td>2088.52</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>TECHM</td>
+            <td class="price">1576.3</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>1476.29</td>
+            <td>1776.32</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="buy-row">
+            <td>THERMAX</td>
+            <td class="price">4841.0</td>
+            <td><span class="signal-pill signal-buy">BUY</span></td>
+            <td>80.0%</td>
+            <td>4431.97</td>
+            <td>5659.07</td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BHARTIARTL</td>
+            <td class="price">1948.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BSE</td>
+            <td class="price">3664.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>COLPAL</td>
+            <td class="price">2092.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>CONCOR</td>
+            <td class="price">491.65</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GVT&amp;D</td>
+            <td class="price">4487.3</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HEXT</td>
+            <td class="price">560.05</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>KEI</td>
+            <td class="price">4974.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LINDEINDIA</td>
+            <td class="price">7004.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>M&amp;M</td>
+            <td class="price">3201.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NLCINDIA</td>
+            <td class="price">295.15</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SWIGGY</td>
+            <td class="price">270.23</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TIINDIA</td>
+            <td class="price">2909.3</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>UNOMINDA</td>
+            <td class="price">1147.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>VOLTAS</td>
+            <td class="price">1359.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>100.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HDFCBANK</td>
+            <td class="price">761.45</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>83.3%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke below the prior 20-bar swing low; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HYUNDAI</td>
+            <td class="price">1958.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>80.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; MACD gave a fresh bearish crossover</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ITCHOTELS</td>
+            <td class="price">164.37</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>80.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close broke below the prior 20-bar swing low; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ADANIENT</td>
+            <td class="price">3182.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ADANIGREEN</td>
+            <td class="price">1541.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>APOLLOTYRE</td>
+            <td class="price">428.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BAJAJHFL</td>
+            <td class="price">86.17</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BAJAJHLDNG</td>
+            <td class="price">10446.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BERGEPAINT</td>
+            <td class="price">506.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>COFORGE</td>
+            <td class="price">1494.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>COROMANDEL</td>
+            <td class="price">2054.3</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>DIXON</td>
+            <td class="price">14118.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>DRREDDY</td>
+            <td class="price">1206.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GODFRYPHLP</td>
+            <td class="price">2132.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GRASIM</td>
+            <td class="price">3179.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HDFCAMC</td>
+            <td class="price">2581.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HDFCLIFE</td>
+            <td class="price">561.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HINDZINC</td>
+            <td class="price">534.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>INDIGO</td>
+            <td class="price">5305.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>INDUSTOWER</td>
+            <td class="price">404.45</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>JSWSTEEL</td>
+            <td class="price">1267.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); RSI is rising in a healthy bullish range; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>KALYANKJIL</td>
+            <td class="price">577.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LICHSGFIN</td>
+            <td class="price">548.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LT</td>
+            <td class="price">3846.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MARICO</td>
+            <td class="price">853.55</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MARUTI</td>
+            <td class="price">13597.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MAXHEALTH</td>
+            <td class="price">1100.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MCX</td>
+            <td class="price">2801.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MEDANTA</td>
+            <td class="price">1342.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MOTHERSON</td>
+            <td class="price">145.22</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MOTILALOFS</td>
+            <td class="price">964.75</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MPHASIS</td>
+            <td class="price">2380.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NESTLEIND</td>
+            <td class="price">1451.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NTPCGREEN</td>
+            <td class="price">92.54</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NYKAA</td>
+            <td class="price">327.95</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>OBEROIRLTY</td>
+            <td class="price">1884.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PERSISTENT</td>
+            <td class="price">5219.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PHOENIXLTD</td>
+            <td class="price">2091.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PRESTIGE</td>
+            <td class="price">1706.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>RADICO</td>
+            <td class="price">4088.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>RVNL</td>
+            <td class="price">225.26</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SIEMENS</td>
+            <td class="price">3667.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SUZLON</td>
+            <td class="price">53.17</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TORNTPOWER</td>
+            <td class="price">1435.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>UNITDSPR</td>
+            <td class="price">1390.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>VBL</td>
+            <td class="price">463.45</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>VEDL</td>
+            <td class="price">264.85</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ZYDUSLIFE</td>
+            <td class="price">1143.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>75.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>UBL</td>
+            <td class="price">1404.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>71.4%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke above the prior 20-bar swing high; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ACC</td>
+            <td class="price">1387.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>AWL</td>
+            <td class="price">193.93</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>COALINDIA</td>
+            <td class="price">431.25</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>DLF</td>
+            <td class="price">673.65</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ETERNAL</td>
+            <td class="price">286.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GODREJCP</td>
+            <td class="price">1054.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>INDIANB</td>
+            <td class="price">855.35</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MRF</td>
+            <td class="price">134000.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MUTHOOTFIN</td>
+            <td class="price">3079.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NMDC</td>
+            <td class="price">83.93</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NTPC</td>
+            <td class="price">348.55</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PREMIERENE</td>
+            <td class="price">1048.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SAIL</td>
+            <td class="price">164.07</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>66.7%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ADANIPORTS</td>
+            <td class="price">1846.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ADANIPOWER</td>
+            <td class="price">220.37</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>AMBUJACEM</td>
+            <td class="price">440.85</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>APLAPOLLO</td>
+            <td class="price">1819.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ASIANPAINT</td>
+            <td class="price">2692.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ATGL</td>
+            <td class="price">700.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>AUBANK</td>
+            <td class="price">1003.3</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>CGPOWER</td>
+            <td class="price">914.85</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>CHOLAFIN</td>
+            <td class="price">1758.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>CIPLA</td>
+            <td class="price">1432.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GAIL</td>
+            <td class="price">173.99</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GICRE</td>
+            <td class="price">361.75</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GMRAIRPORT</td>
+            <td class="price">111.48</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>IDEA</td>
+            <td class="price">13.49</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>IOC</td>
+            <td class="price">143.3</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>JINDALSTEL</td>
+            <td class="price">1044.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>JSL</td>
+            <td class="price">739.05</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>KPITTECH</td>
+            <td class="price">564.45</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>KPRMILL</td>
+            <td class="price">1100.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LICI</td>
+            <td class="price">429.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LTF</td>
+            <td class="price">306.75</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LTM</td>
+            <td class="price">4047.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LTTS</td>
+            <td class="price">3306.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NAM-INDIA</td>
+            <td class="price">1166.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NIACL</td>
+            <td class="price">178.11</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>OFSS</td>
+            <td class="price">11632.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding above the 20-day mean; MACD gave a fresh bearish crossover</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ONGC</td>
+            <td class="price">249.89</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PAGEIND</td>
+            <td class="price">40095.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PFC</td>
+            <td class="price">414.85</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PIIND</td>
+            <td class="price">2681.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SBICARD</td>
+            <td class="price">645.05</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TATAPOWER</td>
+            <td class="price">381.45</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TCS</td>
+            <td class="price">2221.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; RSI is stretched on the upside</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TMPV</td>
+            <td class="price">333.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>60.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD gave a fresh bullish crossover</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HCLTECH</td>
+            <td class="price">1239.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>57.1%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke above the prior 20-bar swing high; Close is holding above the 20-day mean</td>
+        </tr>
+        <tr class="hold-row">
+            <td>AIAENG</td>
+            <td class="price">4681.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>APARINDS</td>
+            <td class="price">13841.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ASTRAL</td>
+            <td class="price">1415.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BOSCHLTD</td>
+            <td class="price">40870.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>BRITANNIA</td>
+            <td class="price">5482.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>CANBK</td>
+            <td class="price">127.52</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ENRIN</td>
+            <td class="price">3373.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ESCORTS</td>
+            <td class="price">2956.2</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HAVELLS</td>
+            <td class="price">1217.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HDBFS</td>
+            <td class="price">720.6</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); RSI is fading in a bearish range; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HEROMOTOCO</td>
+            <td class="price">5034.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); RSI is rising in a healthy bullish range; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HINDALCO</td>
+            <td class="price">951.4</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>HONAUT</td>
+            <td class="price">38575.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ICICIPRULI</td>
+            <td class="price">500.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>INFY</td>
+            <td class="price">1073.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>JIOFIN</td>
+            <td class="price">240.03</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>MAHABANK</td>
+            <td class="price">81.75</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>NATIONALUM</td>
+            <td class="price">342.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>OIL</td>
+            <td class="price">445.15</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>PETRONET</td>
+            <td class="price">276.65</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>POLYCAB</td>
+            <td class="price">8903.5</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>POWERGRID</td>
+            <td class="price">286.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>POWERINDIA</td>
+            <td class="price">32185.0</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>RECLTD</td>
+            <td class="price">362.05</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding above the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SBILIFE</td>
+            <td class="price">1827.9</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>SUPREMEIND</td>
+            <td class="price">3399.1</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TATACOMM</td>
+            <td class="price">1818.8</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TATASTEEL</td>
+            <td class="price">187.24</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close is holding below the 20-day mean; RSI is rising in a healthy bullish range</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TRENT</td>
+            <td class="price">2894.7</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Medium-term trend is up (EMA20 &gt; EMA50); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="hold-row">
+            <td>UPL</td>
+            <td class="price">618.15</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>WIPRO</td>
+            <td class="price">174.97</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding above the 20-day mean; MACD remains above its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>YESBANK</td>
+            <td class="price">23.14</td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>50.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Price is in a strong swing uptrend (EMA20 &gt; EMA50 &gt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="hold-row">
+            <td>GROWW</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="hold-row">
+            <td>ICICIAMC</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LENSKART</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="hold-row">
+            <td>LGEINDIA</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TATACAP</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="hold-row">
+            <td>TMCV</td>
+            <td class="price"></td>
+            <td><span class="signal-pill signal-hold">HOLD</span></td>
+            <td>0.0%</td>
+            <td></td>
+            <td></td>
+            <td class="why">Not enough history for swing setup yet</td>
+        </tr>
+        <tr class="sell-row">
+            <td>ASHOKLEY</td>
+            <td class="price">153.94</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>162.24</td>
+            <td>137.33</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>BALKRISIND</td>
+            <td class="price">2037.6</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>2174.07</td>
+            <td>1764.67</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke below the prior 20-bar swing low; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>BANKBARODA</td>
+            <td class="price">247.7</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>262.11</td>
+            <td>218.87</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>BEL</td>
+            <td class="price">410.05</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>424.94</td>
+            <td>380.28</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>DABUR</td>
+            <td class="price">426.1</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>443.04</td>
+            <td>392.21</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>HINDUNILVR</td>
+            <td class="price">2142.5</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>2216.53</td>
+            <td>1994.44</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>HUDCO</td>
+            <td class="price">200.3</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>211.13</td>
+            <td>178.64</td>
+            <td class="why">Medium-term trend is down (EMA20 &lt; EMA50); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="sell-row">
+            <td>ICICIGI</td>
+            <td class="price">1624.0</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>1732.6</td>
+            <td>1406.8</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>IREDA</td>
+            <td class="price">121.15</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>126.17</td>
+            <td>111.12</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>ITC</td>
+            <td class="price">281.0</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>289.06</td>
+            <td>264.89</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>JUBLFOOD</td>
+            <td class="price">425.5</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>453.84</td>
+            <td>368.81</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>KOTAKBANK</td>
+            <td class="price">385.95</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>404.08</td>
+            <td>349.69</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>MAZDOCK</td>
+            <td class="price">2354.1</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>2452.69</td>
+            <td>2156.93</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>MFSL</td>
+            <td class="price">1539.4</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>1627.36</td>
+            <td>1363.49</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>POLICYBZR</td>
+            <td class="price">1562.5</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>1663.69</td>
+            <td>1360.13</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>SUNDARMFIN</td>
+            <td class="price">4472.6</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>4684.25</td>
+            <td>4049.29</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>TATACONSUM</td>
+            <td class="price">1081.5</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>1123.66</td>
+            <td>997.19</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>TATAELXSI</td>
+            <td class="price">3461.6</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>3676.9</td>
+            <td>3031.0</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="sell-row">
+            <td>TATAINVEST</td>
+            <td class="price">656.95</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>683.61</td>
+            <td>603.64</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="sell-row">
+            <td>VMM</td>
+            <td class="price">113.54</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>119.82</td>
+            <td>100.97</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; MACD remains below its signal line</td>
+        </tr>
+        <tr class="sell-row">
+            <td>WAAREEENER</td>
+            <td class="price">2732.1</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>100.0%</td>
+            <td>2862.53</td>
+            <td>2471.24</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="sell-row">
+            <td>SJVN</td>
+            <td class="price">68.65</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>85.7%</td>
+            <td>70.81</td>
+            <td>64.33</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close broke below the prior 20-bar swing low; Close is holding below the 20-day mean</td>
+        </tr>
+        <tr class="sell-row">
+            <td>BDL</td>
+            <td class="price">1273.2</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>1343.36</td>
+            <td>1132.89</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="sell-row">
+            <td>COCHINSHIP</td>
+            <td class="price">1405.3</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>1470.97</td>
+            <td>1273.96</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="sell-row">
+            <td>DMART</td>
+            <td class="price">3975.6</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>4163.37</td>
+            <td>3600.06</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="sell-row">
+            <td>IRCTC</td>
+            <td class="price">499.8</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>515.27</td>
+            <td>468.86</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>IRFC</td>
+            <td class="price">88.31</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>91.03</td>
+            <td>82.87</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+        <tr class="sell-row">
+            <td>PATANJALI</td>
+            <td class="price">340.25</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>365.94</td>
+            <td>288.88</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is deeply oversold and bounce risk is rising</td>
+        </tr>
+        <tr class="sell-row">
+            <td>RELIANCE</td>
+            <td class="price">1303.7</td>
+            <td><span class="signal-pill signal-sell">SELL</span></td>
+            <td>80.0%</td>
+            <td>1349.91</td>
+            <td>1211.27</td>
+            <td class="why">Price is in a strong swing downtrend (EMA20 &lt; EMA50 &lt; EMA200); Close is holding below the 20-day mean; RSI is fading in a bearish range</td>
+        </tr>
+            </table>
+        </div>
+        <div class="disclaimer">
+            Educational tool only, not financial advice. These are swing-trade candidates, not execution-grade alerts. Review the chart, upcoming earnings, liquidity, and your brokerage costs before taking any trade.
+        </div>
+    </div>
+</body></html>
