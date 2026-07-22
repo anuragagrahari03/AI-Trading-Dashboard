@@ -61,7 +61,7 @@ python main.py
 ```
 
 This fetches recent intraday data, prints a signal table in the terminal,
-and saves `dashboard.html` — open that file in any browser for a nicer view.
+and saves `index.html` — open that file in any browser for a nicer view.
 Results are sorted as BUY, then HOLD, then SELL, with stronger-confidence
 signals first inside each group. Run it again anytime during market hours
 (9:15 AM - 3:30 PM IST) to refresh.

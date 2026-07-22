@@ -5,13 +5,14 @@ Run this to see swing-trade signals for your watchlist.
 
 Produces:
   - a table printed to your terminal
-  - dashboard.html (open it in any browser)
+  - index.html (open it in any browser)
 """
 import io
 import math
 import urllib.request
 from datetime import datetime
 from html import escape
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
@@ -27,6 +28,8 @@ from config import (
 from signals import compute_indicators, generate_signal
 
 SIGNAL_SORT_ORDER = {"BUY": 0, "HOLD": 1, "SELL": 2}
+APP_TIMEZONE = ZoneInfo("Asia/Kolkata")
+APP_TIMEZONE_LABEL = "IST"
 
 
 def fetch_data(symbol, period="5d", interval="5m"):
@@ -180,8 +183,8 @@ def build_dashboard():
     return sort_dashboard(pd.DataFrame(rows))
 
 
-def save_html_report(df, filename="dashboard.html"):
-    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def save_html_report(df, filename="index.html"):
+    ts = datetime.now(APP_TIMEZONE).strftime(f"%Y-%m-%d %H:%M:%S {APP_TIMEZONE_LABEL}")
 
     def row_class(signal):
         return {"BUY": "buy-row", "SELL": "sell-row", "HOLD": "hold-row"}.get(signal, "hold-row")
